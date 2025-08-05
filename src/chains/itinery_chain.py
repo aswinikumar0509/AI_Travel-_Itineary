@@ -15,9 +15,12 @@ itnineary_prompt = ChatPromptTemplate([
     ("human" , "Create a itineary for my day trip")
 ])
 
-def generate_itineary(city:str , interests:list[str]) -> str:
+def generate_itineary(city: str, interests: list[str]) -> str:
     response = llm.invoke(
-        itnineary_prompt.format_messages(city=city,interests=', '.join(interests))
+        itnineary_prompt.format_messages(city=city, interests=', '.join(interests))
     )
 
-    return response.content
+    map_url = f"https://www.google.com/maps/place/{city.replace(' ', '+')}"
+    itinerary_with_map = f"{response.content}\n\n📍 Map of {city}: {map_url}"
+
+    return itinerary_with_map

@@ -1,0 +1,12 @@
+2025-07-30 22:47:58,033 - INFO - Intilaized TravelPlanner instance
+2025-07-30 22:47:58,033 - INFO - City set sucesfully
+2025-07-30 22:47:58,033 - INFO - Interest also set sucesfully..
+2025-07-30 22:47:58,033 - INFO - Gnerating itineary for Delhi and for interests : ['Food']
+2025-07-30 22:47:59,604 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-30 22:47:59,664 - INFO - Itineary generated sucesffully..
+2025-07-30 22:48:12,781 - INFO - Intilaized TravelPlanner instance
+2025-07-30 22:48:12,781 - INFO - City set sucesfully
+2025-07-30 22:48:12,781 - INFO - Interest also set sucesfully..
+2025-07-30 22:48:12,822 - INFO - Gnerating itineary for Noida and for interests : ['Food']
+2025-07-30 22:48:13,942 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-30 22:48:13,945 - INFO - Itineary generated sucesffully..
