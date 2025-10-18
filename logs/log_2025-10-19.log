@@ -1,0 +1,24 @@
+2025-10-19 01:34:52,031 - INFO - Intilaized TravelPlanner instance
+2025-10-19 01:34:52,033 - INFO - City set sucesfully
+2025-10-19 01:34:52,033 - INFO - Interest also set sucesfully..
+2025-10-19 01:34:52,033 - INFO - Gnerating itineary for Delhi and for interests : ['food']
+2025-10-19 01:34:53,001 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 01:34:53,051 - INFO - Itineary generated sucesffully..
+2025-10-19 01:36:11,282 - INFO - Intilaized TravelPlanner instance
+2025-10-19 01:36:11,283 - INFO - City set sucesfully
+2025-10-19 01:36:11,283 - INFO - Interest also set sucesfully..
+2025-10-19 01:36:11,284 - INFO - Gnerating itineary for Delhi and for interests : ['food']
+2025-10-19 01:36:12,363 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 01:36:12,366 - INFO - Itineary generated sucesffully..
+2025-10-19 01:37:20,307 - INFO - Intilaized TravelPlanner instance
+2025-10-19 01:37:20,308 - INFO - City set sucesfully
+2025-10-19 01:37:20,308 - INFO - Interest also set sucesfully..
+2025-10-19 01:37:20,308 - INFO - Gnerating itineary for Delhi and for interests : ['Food']
+2025-10-19 01:37:22,256 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 01:37:22,258 - INFO - Itineary generated sucesffully..
+2025-10-19 01:42:32,807 - INFO - Intilaized TravelPlanner instance
+2025-10-19 01:42:32,807 - INFO - City set sucesfully
+2025-10-19 01:42:32,807 - INFO - Interest also set sucesfully..
+2025-10-19 01:42:32,807 - INFO - Gnerating itineary for Delhi and for interests : ['Food']
+2025-10-19 01:42:34,832 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 01:42:34,834 - INFO - Itineary generated sucesffully..
