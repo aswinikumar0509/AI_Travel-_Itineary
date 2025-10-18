@@ -1,0 +1,30 @@
+2025-08-05 14:01:24,944 - INFO - Intilaized TravelPlanner instance
+2025-08-05 14:01:24,944 - INFO - City set sucesfully
+2025-08-05 14:01:24,944 - INFO - Interest also set sucesfully..
+2025-08-05 14:01:24,944 - INFO - Gnerating itineary for Delhi and for interests : ['Food']
+2025-08-05 14:01:26,361 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-05 14:01:26,379 - INFO - Itineary generated sucesffully..
+2025-08-05 14:04:41,244 - INFO - Intilaized TravelPlanner instance
+2025-08-05 14:04:41,246 - INFO - City set sucesfully
+2025-08-05 14:04:41,246 - INFO - Interest also set sucesfully..
+2025-08-05 14:05:56,653 - INFO - Intilaized TravelPlanner instance
+2025-08-05 14:05:56,653 - INFO - City set sucesfully
+2025-08-05 14:05:56,653 - INFO - Interest also set sucesfully..
+2025-08-05 14:05:56,653 - INFO - Gnerating itineary for Delhi and for interests : ['Food']
+2025-08-05 14:05:57,966 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-05 14:05:57,968 - INFO - Itineary generated sucesffully..
+2025-08-05 14:08:19,493 - INFO - Intilaized TravelPlanner instance
+2025-08-05 14:08:19,493 - INFO - City set sucesfully
+2025-08-05 14:08:19,493 - INFO - Interest also set sucesfully..
+2025-08-05 14:09:29,107 - INFO - Intilaized TravelPlanner instance
+2025-08-05 14:09:29,108 - INFO - City set sucesfully
+2025-08-05 14:09:29,108 - INFO - Interest also set sucesfully..
+2025-08-05 14:09:29,108 - INFO - Generating itinerary for Delhi and interests: ['Food']
+2025-08-05 14:09:30,350 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-05 14:09:30,350 - INFO - Itinerary generated successfully with city map.
+2025-08-05 14:12:44,357 - INFO - Intilaized TravelPlanner instance
+2025-08-05 14:12:44,357 - INFO - City set sucesfully
+2025-08-05 14:12:44,357 - INFO - Interest also set sucesfully..
+2025-08-05 14:12:44,357 - INFO - Gnerating itineary for Delhi and for interests : ['Food']
+2025-08-05 14:12:45,834 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-05 14:12:45,836 - INFO - Itineary generated sucesffully..
