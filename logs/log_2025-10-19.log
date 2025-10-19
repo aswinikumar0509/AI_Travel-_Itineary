@@ -44,3 +44,44 @@
 2025-10-19 02:12:11,200 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-10-19 02:12:13,146 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-10-19 02:12:13,148 - INFO - Itinerary generated successfully
+2025-10-19 13:54:59,891 - INFO - Initialized TravelPlanner instance
+2025-10-19 13:54:59,907 - INFO - City set successfully
+2025-10-19 13:54:59,908 - INFO - Interests set successfully
+2025-10-19 13:54:59,910 - INFO - Days set successfully
+2025-10-19 13:54:59,910 - INFO - Generating itinerary | city=Bengaluru | interests=['history', 'shopping', 'nature', 'photography', 'Food'] | days=5
+2025-10-19 13:55:01,686 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:03,424 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:05,244 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:06,812 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:08,560 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:08,563 - INFO - Itinerary generated successfully
+2025-10-19 13:55:34,268 - INFO - Initialized TravelPlanner instance
+2025-10-19 13:55:34,268 - INFO - City set successfully
+2025-10-19 13:55:34,269 - INFO - Interests set successfully
+2025-10-19 13:55:34,269 - INFO - Days set successfully
+2025-10-19 13:55:34,269 - INFO - Generating itinerary | city=Thailand | interests=['shopping', 'photography', 'nightlife', 'Food'] | days=5
+2025-10-19 13:55:36,135 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:38,149 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:39,878 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:42,211 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:43,465 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 13:55:43,467 - INFO - Itinerary generated successfully
+2025-10-19 14:07:33,170 - INFO - Initialized TravelPlanner instance
+2025-10-19 14:07:33,170 - INFO - City set successfully
+2025-10-19 14:07:33,170 - INFO - Interests set successfully
+2025-10-19 14:07:33,171 - INFO - Days set successfully
+2025-10-19 14:07:33,171 - INFO - Generating itinerary | city=Thailand | interests=['shopping', 'photography', 'nightlife', 'Food', 'temple'] | days=5
+2025-10-19 14:07:35,779 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 14:07:37,206 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 14:07:38,662 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 14:07:39,881 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 14:07:42,081 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 14:07:42,082 - INFO - Itinerary generated successfully
+2025-10-19 20:47:08,175 - INFO - Initialized TravelPlanner instance
+2025-10-19 20:47:08,175 - INFO - City set successfully
+2025-10-19 20:47:08,175 - INFO - Interests set successfully
+2025-10-19 20:47:08,175 - INFO - Days set successfully
+2025-10-19 20:47:08,176 - INFO - Generating itinerary | city=Delhi | interests=['food', 'history', 'Food'] | days=2
+2025-10-19 20:47:09,549 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 20:47:11,394 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 20:47:11,395 - INFO - Itinerary generated successfully

@@ -1,24 +1,71 @@
 # src/core/planner.py
-from typing import List, Sequence, Union
+from typing import List, Union
+from collections.abc import Sequence
 import re
 
 from langchain_core.messages import HumanMessage, AIMessage
-from src.chains.itinery_chain import generate_itineary  # keep your chain
+from src.chains.itinery_chain import generate_itineary  # your itinerary generator
 from src.utils.logger import get_logger
 from src.utils.custom_exception import CustomException
 
 logger = get_logger(__name__)
+
+# Regex to shorten Google Maps links in Markdown
 _LINK_PAREN_RE = re.compile(r'\((https?://[^\s)]+)\)')
 
 def _shorten_bare_urls(md: str) -> str:
+    """Replace raw URLs with '[Open in Maps](url)' links."""
     return _LINK_PAREN_RE.sub(r'([Open in Maps](\1))', md)
 
+
 def _normalize_interests(interests: Union[str, Sequence[str]]) -> List[str]:
-    if isinstance(interests, str):
-        items = [i.strip() for i in interests.split(",")]
-    else:
-        items = [str(i).strip() for i in interests]
-    return [i for i in items if i]
+    """
+    Accepts either:
+      - a list/tuple of strings (recommended)
+      - a single comma-separated string
+    Returns a cleaned, lowercase, de-duplicated list of interests.
+    """
+    try:
+        if interests is None:
+            raise ValueError("interests must not be None")
+
+        # Handle string input like "food, culture, hiking"
+        if isinstance(interests, (str, bytes)):
+            raw_items = [s.strip() for s in str(interests).split(",")]
+
+        # Handle list / tuple / set input
+        elif isinstance(interests, Sequence):
+            raw_items = []
+            for i in interests:
+                if i is None:
+                    continue
+                s = str(i).strip()
+                if s:
+                    raw_items.append(s)
+
+        else:
+            raise TypeError(
+                f"interests must be a list/tuple/set of strings or a comma-separated string, got {type(interests).__name__}"
+            )
+
+        # Lowercase, dedupe while preserving order
+        seen = set()
+        cleaned: List[str] = []
+        for s in raw_items:
+            t = s.lower()
+            if t and t not in seen:
+                seen.add(t)
+                cleaned.append(t)
+
+        if not cleaned:
+            raise ValueError("Provide at least one non-empty interest")
+
+        return cleaned
+
+    except Exception as e:
+        logger.exception("Error while normalizing interests")
+        raise
+
 
 class TravelPlanner:
     def __init__(self):
@@ -31,30 +78,35 @@ class TravelPlanner:
 
     def set_city(self, city: str):
         try:
-            self.city = city.strip()
+            self.city = (city or "").strip()
             self.messages.append(HumanMessage(content=f"City: {self.city}"))
             logger.info("City set successfully")
         except Exception as e:
-            logger.error(f"Error while setting city: {e}")
-            raise CustomException("Failed to set city", e)
+            logger.exception("Error while setting city")
+            raise CustomException("Failed to set city") from e
 
     def set_interests(self, interests: Union[str, Sequence[str]]):
         try:
+            logger.info("set_interests received type=%s value=%r", type(interests).__name__, interests)
             self.interests = _normalize_interests(interests)
-            self.messages.append(HumanMessage(content=f"Interests: {', '.join(self.interests)}"))
-            logger.info("Interests set successfully")
+            self.messages.append(
+                HumanMessage(content=f"Interests: {', '.join(self.interests)}")
+            )
+            logger.info("Interests set successfully: %s", self.interests)
         except Exception as e:
-            logger.error(f"Error while setting interests: {e}")
-            raise CustomException("Failed to set interests", e)
+            logger.exception("Error while setting interests")
+            raise CustomException("Failed to set interests") from e
 
     def set_days(self, days: int):
         try:
             self.days = max(1, int(days))
-            self.messages.append(HumanMessage(content=f"Trip length: {self.days} day(s)"))
+            self.messages.append(
+                HumanMessage(content=f"Trip length: {self.days} day(s)")
+            )
             logger.info("Days set successfully")
         except Exception as e:
-            logger.error(f"Error while setting days: {e}")
-            raise CustomException("Failed to set days", e)
+            logger.exception("Error while setting days")
+            raise CustomException("Failed to set days") from e
 
     def _call_chain_for_day(self, day_idx: int, focus: str) -> str:
         """
@@ -62,28 +114,30 @@ class TravelPlanner:
         while still mixing the others.
         """
         try:
-            # Try richer signature if your chain supports it
             try:
+                # Preferred signature if chain supports it
                 return generate_itineary(
                     self.city,
                     self.interests,
                     days=1,
                     day_index=day_idx,
-                    primary_interest=focus
+                    primary_interest=focus,
                 )
             except TypeError:
-                # Fallback prompt steering
+                # Fallback for simpler chains
                 steer = (
                     f"Create a detailed itinerary for **Day {day_idx}** in {self.city}.\n"
-                    f"Primary focus: **{focus}**. Also weave in: {', '.join([i for i in self.interests if i != focus])}.\n"
+                    f"Primary focus: **{focus}**. Also weave in: "
+                    f"{', '.join([i for i in self.interests if i != focus])}.\n"
                     "Include breakfast/lunch/dinner and activity blocks with short Google Maps links."
                 )
                 self.messages.append(HumanMessage(content=steer))
                 raw = generate_itineary(self.city, self.interests)
                 return f"### Day {day_idx} — Focus: {focus}\n\n{raw}"
+
         except Exception as e:
-            logger.error(f"Error generating Day {day_idx}: {e}")
-            raise
+            logger.exception(f"Error generating itinerary for Day {day_idx}")
+            raise CustomException(f"Failed to generate day {day_idx}") from e
 
     def create_itinerary(self, days: int | None = None) -> str:
         try:
@@ -91,11 +145,12 @@ class TravelPlanner:
                 self.set_days(days)
 
             if not self.interests:
-                self.interests = ["food"]  # sane default
+                self.interests = ["food"]  # default
 
-            logger.info(f"Generating itinerary | city={self.city} | interests={self.interests} | days={self.days}")
+            logger.info(
+                f"Generating itinerary | city={self.city} | interests={self.interests} | days={self.days}"
+            )
 
-            # Round-robin focus so each day spotlights a different interest
             if self.days == 1:
                 try:
                     md = generate_itineary(self.city, self.interests, days=1)
@@ -122,5 +177,5 @@ class TravelPlanner:
             return final_md
 
         except Exception as e:
-            logger.error(f"Error while creating itinerary: {e}")
-            raise CustomException("Failed to create itinerary", e)
+            logger.exception("Error while creating itinerary")
+            raise CustomException("Failed to create itinerary") from e
