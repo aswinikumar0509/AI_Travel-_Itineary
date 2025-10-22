@@ -85,3 +85,105 @@
 2025-10-19 20:47:09,549 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-10-19 20:47:11,394 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-10-19 20:47:11,395 - INFO - Itinerary generated successfully
+2025-10-19 22:07:38,863 - INFO - Initialized TravelPlanner instance
+2025-10-19 22:07:38,865 - INFO - City set successfully
+2025-10-19 22:07:38,865 - INFO - Interests set successfully
+2025-10-19 22:07:38,865 - INFO - Days set successfully
+2025-10-19 22:07:38,865 - INFO - Generating itinerary | city=Delhi | interests=['food', 'history', 'food'] | days=2
+2025-10-19 22:07:40,187 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 22:07:41,452 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 22:07:41,453 - INFO - Itinerary generated successfully
+2025-10-19 22:40:54,086 - INFO - Initialized TravelPlanner instance
+2025-10-19 22:40:54,086 - INFO - City set successfully
+2025-10-19 22:40:54,086 - INFO - set_interests received type=list value=['food', 'history', 'Food']
+2025-10-19 22:40:54,086 - INFO - Interests set successfully: ['food', 'history']
+2025-10-19 22:40:54,086 - INFO - Days set successfully
+2025-10-19 22:40:54,087 - INFO - Generating itinerary | city=Delhi | interests=['food', 'history'] | days=2
+2025-10-19 22:40:54,087 - ERROR - Error generating itinerary for Day 1
+Traceback (most recent call last):
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py", line 119, in _call_chain_for_day
+    return generate_itineary(
+TypeError: generate_itineary() got an unexpected keyword argument 'days'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py", line 135, in _call_chain_for_day
+    raw = generate_itineary(self.city, self.interests)
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\chains\itinery_chain.py", line 53, in generate_itineary
+    itnineary_prompt.format_messages(city=city, interests=', '.join(interests))
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\chat.py", line 1188, in format_messages
+    message = message_template.format_messages(**kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\chat.py", line 560, in format_messages
+    return [self.format(**kwargs)]
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\chat.py", line 593, in format
+    text = self.prompt.format(**kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\prompt.py", line 186, in format
+    return DEFAULT_FORMATTER_MAPPING[self.template_format](self.template, **kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 161, in format
+    return self.vformat(format_string, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\utils\formatting.py", line 33, in vformat
+    return super().vformat(format_string, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 165, in vformat
+    result, _ = self._vformat(format_string, args, kwargs, used_args, 2)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 205, in _vformat
+    obj, arg_used = self.get_field(field_name, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 270, in get_field
+    obj = self.get_value(first, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 227, in get_value
+    return kwargs[key]
+KeyError: 'day_index'
+2025-10-19 22:40:54,108 - ERROR - Error while creating itinerary
+Traceback (most recent call last):
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py", line 119, in _call_chain_for_day
+    return generate_itineary(
+TypeError: generate_itineary() got an unexpected keyword argument 'days'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py", line 135, in _call_chain_for_day
+    raw = generate_itineary(self.city, self.interests)
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\chains\itinery_chain.py", line 53, in generate_itineary
+    itnineary_prompt.format_messages(city=city, interests=', '.join(interests))
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\chat.py", line 1188, in format_messages
+    message = message_template.format_messages(**kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\chat.py", line 560, in format_messages
+    return [self.format(**kwargs)]
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\chat.py", line 593, in format
+    text = self.prompt.format(**kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\prompts\prompt.py", line 186, in format
+    return DEFAULT_FORMATTER_MAPPING[self.template_format](self.template, **kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 161, in format
+    return self.vformat(format_string, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\site-packages\langchain_core\utils\formatting.py", line 33, in vformat
+    return super().vformat(format_string, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 165, in vformat
+    result, _ = self._vformat(format_string, args, kwargs, used_args, 2)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 205, in _vformat
+    obj, arg_used = self.get_field(field_name, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 270, in get_field
+    obj = self.get_value(first, args, kwargs)
+  File "C:\Users\aswin\anaconda3\envs\aitravel\lib\string.py", line 227, in get_value
+    return kwargs[key]
+KeyError: 'day_index'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py", line 164, in create_itinerary
+    md = self._call_chain_for_day(d, focus)
+  File "C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py", line 140, in _call_chain_for_day
+    raise CustomException(f"Failed to generate day {day_idx}") from e
+src.utils.custom_exception.CustomException: Failed to generate day 1 | Error: None | File: C:\Users\aswin\OneDrive\Documents\Data Science\Gen AI\AI Travel LLM\src\core\planner.py | Line: 135
+2025-10-19 22:54:02,949 - INFO - Initialized TravelPlanner instance
+2025-10-19 22:54:02,950 - INFO - City set successfully
+2025-10-19 22:54:02,950 - INFO - set_interests received type=list value=['food', 'history', 'Food']
+2025-10-19 22:54:02,950 - INFO - Interests set successfully: ['food', 'history']
+2025-10-19 22:54:02,950 - INFO - Days set successfully
+2025-10-19 22:54:02,950 - INFO - Generating itinerary | city=Delhi | interests=['food', 'history'] | days=2
+2025-10-19 22:54:02,950 - INFO - Generating itinerary for Day 1
+2025-10-19 22:54:04,874 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 22:54:04,885 - INFO - Generating itinerary for Day 2
+2025-10-19 22:54:06,443 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-19 22:54:06,444 - INFO - Itinerary generated successfully
